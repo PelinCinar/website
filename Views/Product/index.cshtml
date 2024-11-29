@@ -1,0 +1,42 @@
+@model IEnumerable<Product>
+
+<h2>Ürün Listesi</h2>
+<a href="/Product/Create" class="btn btn-primary"> Ürün Ekle</a>
+<hr>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.ProductId)</th>
+            <th>@Html.DisplayNameFor(m => m.ProductName)</th>
+            <th>@Html.DisplayNameFor(m => m.ProductDescription)</th>
+            <th>@Html.DisplayNameFor(m => m.Price )</th>
+            <th>@Html.DisplayNameFor(m => m.Image)</th>
+            <th>@Html.DisplayNameFor(m => m.CategoryId)</th>
+
+
+            <th style="width:150px"> Ayarlar </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model) //
+        {
+            <tr>
+                <th>@Html.DisplayFor(modelItem => item.ProductId)</th>
+                <th>@Html.DisplayFor(modelItem => item.ProductName)</th>
+                <th>@Html.DisplayFor(modelItem => item.ProductDescription)</th>
+                <th>@Html.DisplayFor(modelItem => item.Price)</th>
+                <th>@Html.DisplayFor(modelItem => item.Image)</th>
+                <th>@Html.DisplayFor(modelItem => item.CategoryId)</th>
+
+                <td>
+                    <a asp-controller="Product" asp-action="Edit" asp-route-id="@item.ProductId"
+                        class="btn btn-sm btn-warning">Detail</a>
+                    <a asp-controller="Product" asp-action="Delete" asp-route-id="@item.ProductId"
+                        class="btn btn-sm btn-danger">Sil</a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
